@@ -97,8 +97,12 @@ class Abanalysis:
         self.error_log = 2
 
         # 数据库基本信息
+        '''
         self.ip = "119.23.210.52"
         self.port = 3312
+        '''
+        self.ip = "47.96.178.222"
+        self.port = 3306
         self.user = "tb"
         self.passwd = "tb123456"
         self.db = "chargingpile"
