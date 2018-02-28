@@ -233,9 +233,11 @@ class Abanalysis:
 
     # 短信通知管理员，通过java后台通知
     def send_message(self, disconlist, abnormallist):
-        param = {'disconnection' : disconlist, 'abnormaltrading' : abnormallist}
+        conn = ','.join(str(e) for e in disconlist)
+        trade = ','.join(str(e) for e in abnormallist)
+        param = {'disconnection': conn, 'abnormaltrading': trade, 'time': self.cycle}
         try:
-            reply = requests.post(self.message_url, param, timeout = 0.01)
+            reply = requests.post(self.message_url, param, timeout = 10)
         except:
             self.write_log(self.error_log, "短信通知失败，无法连接服务器。断线设备" + str(disconlist) + "异常设备" + str(abnormallist))
             return
@@ -255,7 +257,7 @@ class Abanalysis:
         trade = ','.join(str(e) for e in abnormallist)
         param = {'disconnection':conn, 'abnormaltrading':trade, 'time':self.cycle}
         try:
-            reply = requests.post(self.email_url, param, timeout = 0.01)
+            reply = requests.post(self.email_url, param, timeout = 10)
         except:
             self.write_log(self.error_log, "邮件通知失败，无法连接服务器。断线设备" + str(disconlist) + "异常设备" + str(abnormallist))
             return
