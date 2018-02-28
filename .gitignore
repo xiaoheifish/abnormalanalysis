@@ -1,0 +1,11 @@
+# Compiled class file
+*.csv
+*.xlsx
+*.ipynb
+*.zip
+
+/.idea/*
+/log/*
+/.ipynb_checkpoints/*
+/pickandnotice/*
+/dysms_python/*
